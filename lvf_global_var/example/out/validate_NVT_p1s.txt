@@ -1,0 +1,27 @@
+corner NVT_p1s : 180 points, selected mode = logquad, tolerance = 2.0 % of value
+scope                  variant   mean|e|   max|e|   mean|es|    max|es|   viol
+  e  = error in % of the corner value, es = error in % of the simulated shift
+ALL                    lin         0.056    0.188       6.44      94.51      0
+ALL                    quad        0.003    0.077       0.47      10.02      0
+ALL                    loglin      0.037    0.177       5.81      94.51      0
+ALL                    logquad     0.003    0.077       0.45      10.03      0
+ALL/delay              lin         0.045    0.147       6.51      94.51       
+ALL/delay              quad        0.003    0.019       0.41       5.08       
+ALL/delay              loglin      0.028    0.177       6.01      94.51       
+ALL/delay              logquad     0.002    0.018       0.40       5.07       
+ALL/trans              lin         0.067    0.188       6.36      24.59       
+ALL/trans              quad        0.004    0.077       0.55      10.02       
+ALL/trans              loglin      0.046    0.151       5.53      24.62       
+ALL/trans              logquad     0.003    0.077       0.52      10.03       
+INV_X1                 lin         0.047    0.166       9.59      89.84       
+INV_X1                 quad        0.001    0.009       0.44       5.08       
+INV_X1                 loglin      0.036    0.165       9.13      89.84       
+INV_X1                 logquad     0.001    0.009       0.42       5.07       
+NAND2_X1               lin         0.061    0.188       4.97      58.11       
+NAND2_X1               quad        0.006    0.077       0.59      10.02       
+NAND2_X1               loglin      0.041    0.177       4.34      58.10       
+NAND2_X1               logquad     0.005    0.077       0.57      10.03       
+NOR2_X1                lin         0.055    0.187       6.50      94.51       
+NOR2_X1                quad        0.002    0.035       0.36       3.96       
+NOR2_X1                loglin      0.034    0.149       5.76      94.51       
+NOR2_X1                logquad     0.001    0.042       0.34       3.96       
