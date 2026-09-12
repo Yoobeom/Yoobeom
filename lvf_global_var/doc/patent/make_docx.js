@@ -3,7 +3,7 @@
 // Author : yoobeom.kim@samsung.com
 // Purpose: Build patent_draft_ko.docx from patent_draft_ko.md (KIPO style
 //          specification) and embed figures/fig1..fig7.png in the 【도면】
-//          section.  Uses the docx npm package.
+//          section (all figures/figN.png present).  Uses the docx npm package.
 //            node make_docx.js
 // ---------------------------------------------------------------------------
 const fs = require("fs");
@@ -132,7 +132,7 @@ function build() {
       continue;
     }
     if (inCode) { codeBuf.push(line); continue; }
-    if (line.startsWith("|")) { tableBuf.push(line); continue; }
+    if (line.startsWith("|") && line.trim().endsWith("|")) { tableBuf.push(line); continue; }
     flushTable();
     if (line.trim() === "") continue;
     if (line.startsWith("---")) {
@@ -146,7 +146,10 @@ function build() {
     }
     if (line.startsWith("## 【도면】")) {
       children.push(heading("【도면】", HeadingLevel.HEADING_1));
-      for (let n = 1; n <= 7; n++) children.push(...figureBlock(n));
+      for (let n = 1; n <= 30; n++) {
+        if (!fs.existsSync(path.join(FIGDIR, `fig${n}.png`))) break;
+        children.push(...figureBlock(n));
+      }
       // skip the placeholder line(s) until next heading or separator
       while (i < lines.length && !lines[i].startsWith("#") && !lines[i].startsWith("---")) i++;
       continue;
