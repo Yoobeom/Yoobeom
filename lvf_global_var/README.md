@@ -297,6 +297,10 @@ lvf_global_var/
     summarize_validation.tcl    corner별 오차 요약
     contrib_to_global.tcl       contribution → 1차 global 모델
     write_nominal_lib.tcl       예제용 nominal Liberty (LVF sigma 포함)
+  doc/patent/
+    patent_draft_ko.md          특허 출원 명세서 초안 (KIPO 형식), patent_draft_ko.docx
+    make_figures.py, make_docx.js  도면 생성, docx 생성
+    figures/fig1..fig7.png      도면
   example/
     config/example.cfg.tcl      설정
     config/corners.tcl          corner 정의
