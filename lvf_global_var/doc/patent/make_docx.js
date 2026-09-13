@@ -4,7 +4,7 @@
 // Purpose: Build patent_draft_ko.docx from patent_draft_ko.md (KIPO style
 //          specification) and embed figures/fig1..fig7.png in the 【도면】
 //          section (all figures/figN.png present).  Uses the docx npm package.
-//            node make_docx.js
+//            node make_docx.js [input.md] [output.docx]
 // ---------------------------------------------------------------------------
 const fs = require("fs");
 const path = require("path");
@@ -14,8 +14,9 @@ const {
 } = require("docx");
 
 const HERE = __dirname;
-const MD = path.join(HERE, "patent_draft_ko.md");
-const OUT = path.join(HERE, "patent_draft_ko.docx");
+// usage: node make_docx.js [input.md] [output.docx]   (defaults: patent_draft_ko.md / .docx)
+const MD = process.argv[2] ? path.resolve(process.argv[2]) : path.join(HERE, "patent_draft_ko.md");
+const OUT = process.argv[3] ? path.resolve(process.argv[3]) : path.join(HERE, "patent_draft_ko.docx");
 const FIGDIR = path.join(HERE, "figures");
 
 const FONT = { ascii: "Malgun Gothic", hAnsi: "Malgun Gothic", eastAsia: "Malgun Gothic", cs: "Malgun Gothic" };
