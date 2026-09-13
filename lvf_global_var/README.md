@@ -298,9 +298,12 @@ lvf_global_var/
     contrib_to_global.tcl       contribution → 1차 global 모델
     write_nominal_lib.tcl       예제용 nominal Liberty (LVF sigma 포함)
   doc/patent/
-    patent_draft_ko.md          특허 출원 명세서 초안 (KIPO 형식), patent_draft_ko.docx
-    make_figures.py, make_docx.js  도면 생성, docx 생성
-    figures/fig1..fig7.png      도면
+    patent_draft_ko.md          특허 출원 명세서 초안 (KIPO 형식), patent_draft_ko.docx / .pdf
+    prior_art_review_ko.md      선행기술 검토서, prior_art_review_ko.docx / .pdf
+    make_figures.py, make_docx.js  도면 PNG 생성, docx 생성
+    make_figures_pptx.py        도면을 편집 가능한 PowerPoint 도형·표·차트로 생성
+    patent_figures.pptx         도 1 ~ 도 12 (슬라이드당 1도, 편집용)
+    figures/fig1..fig12.png     도면 (docx 삽입용)
   example/
     config/example.cfg.tcl      설정
     config/corners.tcl          corner 정의
