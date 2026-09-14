@@ -304,6 +304,9 @@ lvf_global_var/
     make_figures_pptx.py        도면을 편집 가능한 PowerPoint 도형·표·차트로 생성
     patent_figures.pptx         도 1 ~ 도 12 (슬라이드당 1도, 편집용)
     figures/fig1..fig12.png     도면 (docx 삽입용)
+  doc/slides/
+    make_invention_steps_pptx.py  4단계 설명 슬라이드 생성 (도형·표 편집 가능)
+    invention_4steps.pptx         Step 1~4 개요도 + 단계별 상세 (16:9, 5장)
   example/
     config/example.cfg.tcl      설정
     config/corners.tcl          corner 정의
