@@ -1,0 +1,40 @@
+Model error versus direct global-corner simulation
+  e  : |v_model - v_sim| / v_sim  in %  (delay rows)
+  es : |dv_model - dv_sim| / |dv_sim| in %  (delay rows, error of the shift itself)
+corner      shift%     npts |     lin mean/max e   mean es |    quad mean/max e   mean es |  loglin mean/max e   mean es | logquad mean/max e   mean es
+FFG          -15.1       90 |  2.18 /  4.23    11.9 |  0.68 /  1.74     3.6 |  0.71 /  1.80     4.0 |  0.25 /  1.04     1.4
+FSG            4.0       90 |  1.82 /  3.45    10.5 |  0.67 /  1.70     3.7 |  0.85 /  2.57     4.7 |  0.30 /  1.42     1.6
+NU0_m3s        1.5       90 |  0.13 /  0.35     8.6 |  0.01 /  0.04     1.3 |  0.11 /  0.29     8.0 |  0.01 /  0.03     1.2
+NVT_m3s       -5.7       90 |  0.42 /  1.38    13.8 |  0.03 /  0.27     1.6 |  0.27 /  1.94    12.3 |  0.03 /  0.25     1.5
+NVT_p1s        2.1       90 |  0.04 /  0.15     6.5 |  0.00 /  0.02     0.4 |  0.03 /  0.18     6.0 |  0.00 /  0.02     0.4
+NVT_p3s        6.5       90 |  0.40 /  1.31    19.9 |  0.05 /  0.26     2.7 |  0.26 /  1.46    18.5 |  0.04 /  0.27     2.6
+PU0_m3s        3.1       90 |  0.26 /  0.69     7.2 |  0.03 /  0.13     1.6 |  0.18 /  0.42     5.8 |  0.02 /  0.14     1.4
+PVT_m3s       -6.1       90 |  0.61 /  1.95    15.9 |  0.07 /  0.83     3.7 |  0.26 /  1.17    13.5 |  0.06 /  0.79     3.6
+PVT_p3s        7.3       90 |  0.57 /  1.73    34.6 |  0.09 /  0.48     9.7 |  0.26 /  1.00    32.3 |  0.06 /  0.41     9.4
+SFG           -0.2       90 |  1.93 /  4.19    10.6 |  0.66 /  1.40     3.7 |  0.83 /  2.29     4.7 |  0.30 /  1.65     1.7
+SS1            5.9       90 |  0.22 /  0.41     3.9 |  0.09 /  0.20     1.5 |  0.09 /  0.20     1.6 |  0.03 /  0.15     0.5
+SSG           19.3       90 |  1.91 /  3.47    11.6 |  0.85 /  1.89     5.1 |  0.82 /  1.48     5.1 |  0.29 /  0.82     1.8
+
+Sensitivity consistency at a 3 sigma_g shift, % of nominal delay (delay rows):
+  d1 = |sum_i S1_i - S1_group| * 3sg / v0     (first order, must be ~0)
+  d2 = 0.5 * (H2_group - sum_i S2_i) * (3sg)^2 / v0   (cross terms missing in the per-transistor sum)
+  cell       grp/par      mean d1       max d1      mean d2      max|d2|
+  INV_X1     N/vth         0.000        0.000        0.000        0.000
+  INV_X1     N/u0          0.000        0.000        0.000        0.000
+  INV_X1     P/vth         0.000        0.000        0.000        0.000
+  INV_X1     P/u0          0.000        0.000        0.000        0.000
+  NAND2_X1   N/vth         0.000        0.007        0.039        0.158
+  NAND2_X1   N/u0          0.000        0.002        0.004        0.014
+  NAND2_X1   P/vth         0.000        0.000        0.000        0.001
+  NAND2_X1   P/u0          0.000        0.000        0.000        0.001
+  NOR2_X1    N/vth         0.000        0.000        0.000        0.001
+  NOR2_X1    N/u0          0.000        0.000       -0.000       -0.000
+  NOR2_X1    P/vth         0.003        0.073        0.080        0.378
+  NOR2_X1    P/u0          0.000        0.001        0.013        0.067
+
+First-order term rebuilt from unsigned contributions (pull-rule sign) vs signed sum,
+error at a 3 sigma_g shift in % of nominal delay (delay rows):
+  N,u0     mean  0.042 %  max  0.330 %  (n=90)
+  N,vth    mean  0.104 %  max  1.018 %  (n=90)
+  P,u0     mean  0.109 %  max  0.635 %  (n=90)
+  P,vth    mean  0.077 %  max  0.612 %  (n=90)
