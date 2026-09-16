@@ -186,10 +186,10 @@ STEPS = [
      ["LVF 특성화의 TR별 섭동 민감도", "S1(i, q)"],
      ["C(i) = |S1(i)| / Σ_j |S1(j)|"],
      ["기여도 표면  C(i ; slew, load)", "Σ_i C(i) = 1"]),
-    ("STEP 2", "TR별 값으로 환산",
-     ["USM 라이브러리의 집합 변화량", "셀 전체를 함께 흔든 결과"],
-     ["TR별 값 = C(i) × 집합값"],
-     ["TR별 민감도 / 변동량", "TR 단위로 사용 가능"]),
+    ("STEP 2", "TR별 global variation 예측",
+     ["USM의 집합 global 변화량", "S_agg(p)"],
+     ["S(i, p) = C(i) · S_agg(p)"],
+     ["각 TR이 차지하는 몫", "TR별 민감도 확보"]),
     ("STEP 3", "내부 TR 변동량 확보",
      ["LLE DM 레이아웃 추출 결과", "(경계 TR + 내부 TR)"],
      ["TR 위치별 Δp(i) 산출"],
@@ -197,17 +197,17 @@ STEPS = [
     ("STEP 4", "USM + LLE 통합",
      ["C(i),  S_agg(p),  Δp(i, p)"],
      ["ΔD = Σ_i Σ_p", "C(i)·S_agg(p)·Δp(i,p)"],
-     ["전역·LLE·열화를", "하나의 식으로 처리"]),
+     ["LLE, aging 등을", "개별 TR charac 없이 처리"]),
 ]
 
 
 def slide1(prs):
-    s = slide_head(prs, "기여도로 집합값을 TR 단위로 환산해 LLE DM에 연결",
-                   "셀 단위로만 주어지는 집합값을 기여도로 트랜지스터 단위로 환산하여, 트랜지스터별 변동량을 쓰는 LLE DM에 연결한다.",
+    s = slide_head(prs, "LVF 민감도로 각 TR의 global variation을 예측한다",
+                   "국부 변동 σ 산출에 쓴 TR별 민감도를 재사용하여 각 TR이 global variation에서 차지하는 몫을 구하고, 이를 LLE와 aging 등 TR마다 변동량이 다른 경우의 보정에 활용한다.",
                    "4단계 전체 흐름. Step 1~2는 모델 생성, Step 3은 변동량 공급, Step 4는 결합.")
     X0, W, GAP = 0.54, 2.75, 0.42
-    YH, HH = 1.36, 0.66                     # header
-    YR, HR = 2.06, 1.04                     # rows
+    YH, HH = 1.32, 0.80                     # header (3-line step name fits)
+    YR, HR = 2.12, 1.00                     # rows
 
     def cell(x, y, label, lines, fill):
         body = [(t, {"size": 10.5, "mono": mono, "bold": mono, "space": 2})
@@ -227,11 +227,11 @@ def slide1(prs):
         if i < 3:
             arrow(s, x + W + 0.03, YR + 1.5 * HR, x + W + GAP - 0.03, YR + 1.5 * HR)
 
-    yb = YR + 3 * HR + 0.34
+    yb = YR + 3 * HR + 0.30
     box(s, X0, yb, 4 * W + 3 * GAP, 1.10,
         [("결합 결과      ΔD_arc = Σ_i Σ_p  C(i ; s,l) · S_agg(p ; s,l) · Δp(i, p)",
           {"size": 13.5, "bold": True, "color": NAVY, "mono": True, "space": 6}),
-         ("개별 TR 특성화 시뮬레이션 추가 없음. LLE, 전역 파라미터 이동, 열화가 Δp(i, p)만 바꾸어 같은 경로로 들어온다.",
+         ("global variation은 모든 TR에 같은 Δp를 준다. TR별 몫을 알면 TR마다 Δp가 다른 LLE와 aging으로 그대로 확장된다.",
           {"size": 11, "space": 0})],
         fill=TINT, line=NAVY, lw=1.25, pad=0.16, anchor=MSO_ANCHOR.MIDDLE)
     textbox(s, X0, yb + 1.32, 12.26, 0.3,
@@ -283,8 +283,8 @@ def slide2(prs):
 # slide 3 : step 2 detail
 # ---------------------------------------------------------------------------
 def slide3(prs):
-    s = slide_head(prs, "집합값은 기여도를 곱해야 TR 단위가 된다",
-                   "USM 값은 셀 전체를 동시에 섭동한 결과라 TR 식별 정보가 없다. LLE DM은 TR별 Δp를 주는데 받을 상대가 없다.",
+    s = slide_head(prs, "집합 변화량에 기여도를 곱하면 TR별 몫이 나온다",
+                   "USM은 셀 전체를 함께 흔든 결과라 TR 식별 정보가 없다. 기여도가 각 TR이 global variation에서 차지하는 몫을 결정한다.",
                    "Step 2 상세. contributing_devices : all 의 한계와 복원식, 정합성 조건.")
     box(s, 0.54, 1.32, 5.9, 0.42, [("USM 라이브러리 구조", {"size": 12, "bold": True, "color": WHITE})],
         fill=GRAY, line=GRAY, anchor=MSO_ANCHOR.MIDDLE)
@@ -299,8 +299,8 @@ def slide3(prs):
 
     x2, w2 = 6.75, 6.05
     for i, (head, body, mono) in enumerate([
-            ("문제", "USM 값 S_agg(p)는 셀 전체의 합이다. LLE DM이 만든 TR별 Δp를 곱할 TR별 상대가 없다.", None),
-            ("환산", "S_rec(i, p) = C(i ; s,l) · S_agg(p ; s,l)", True),
+            ("문제", "USM 값 S_agg(p)는 셀 전체의 합이다. 어느 TR이 얼마를 차지하는지가 라이브러리에 없다.", None),
+            ("예측", "S(i, p) = C(i ; s,l) · S_agg(p ; s,l)", True),
             ("정합성", "모든 TR에 동일한 Δp 인가 시   Σ_i C(i)·S_agg(p)·Δp = S_agg(p)·Δp", True)]):
         y = 1.32 + i * 0.90
         box(s, x2, y, 0.95, 0.80, [(head, {"size": 11, "bold": True, "color": WHITE, "align": PP_ALIGN.CENTER})],
@@ -310,14 +310,14 @@ def slide3(prs):
             fill=WHITE, anchor=MSO_ANCHOR.MIDDLE)
 
     textbox(s, 0.54, 4.12, 12.26, 0.3,
-            [("환산 정확도 — 그룹 동시 섭동으로 얻은 직접 민감도 대비 (3σ, 지연 대비 %)",
+            [("예측 정확도 — 그룹 동시 섭동으로 얻은 직접 민감도 대비 (3σ, 지연 대비 %)",
               {"size": 10.5, "bold": True})])
     table(s, 0.54, 4.48, [3.4, 2.9, 3.0, 2.96], [0.52, 0.56, 0.56],
           ["기여도 정의", "NAND2 최대 오차", "NOR2 최대 오차", "판정"],
           [["부호 유지  C(i) = S1(i)/ΣS1(j)", "0.005 %", "0.060 %", "권장"],
            ["부호 없음  C(i) = |S1(i)|/Σ|S1(j)|", "0.535 %", "0.542 %", "조건부"]])
     textbox(s, 0.54, 6.26, 12.26, 0.6,
-            [("환산이 정합성 조건을 만족하므로, 모든 TR을 같은 양으로 움직이면 집합값이 그대로 복구된다.",
+            [("모든 TR을 같은 양으로 움직이면 집합값이 그대로 복구되므로, 예측된 TR별 몫은 서로 모순되지 않는다.",
               {"size": 10.5, "space": 4}),
              ("1차 항 기준 그룹 동시 섭동과의 차이는 지연 대비 최대 0.07 % (3σ).", {"size": 10.5, "color": GRAY})])
 
@@ -348,7 +348,7 @@ def slide4(prs):
     table(s, 5.35, 1.66, [2.05, 2.85, 2.85], [0.52, 0.70, 0.70, 0.86, 0.70],
           ["항목", "종래 (경계 TR 직접 특성화)", "본 발명 (기여도 × USM)"],
           [["보정 대상 TR", "경계 TR만", "경계 + 내부 전체"],
-           ["민감도 획득", "TR별 직접 특성화 시뮬레이션", "기여도로 집합값을 환산"],
+           ["민감도 획득", "TR별 직접 특성화 시뮬레이션", "기여도로 TR별 몫을 예측"],
            ["추가 특성화 비용", "TR 수 × 파라미터 수 × 테이블 포인트 수에 비례", "없음"],
            ["내부 TR 변동", "미반영, 오차 잔존", "반영"]])
     textbox(s, 0.54, 5.20, 12.26, 0.9,
@@ -372,11 +372,11 @@ def slide5(prs):
         fill=TINT, line=NAVY, lw=1.25, anchor=MSO_ANCHOR.MIDDLE)
 
     table(s, 0.54, 2.56, [3.3, 5.5, 1.9, 1.56], [0.48, 0.48, 0.48, 0.48, 0.48],
-          ["변동 원인", "Δp(i, p) 공급원", "추가 특성화", "기여도 재사용"],
-          [["국부 레이아웃 효과 (LLE)", "레이아웃 추출, 경계 + 내부 TR", "없음", "그대로"],
-           ["전역 파라미터 이동", "전역 변동점 정의  ΔVth, ΔU0", "없음", "그대로"],
-           ["경년 열화 (BTI)", "열화 모델  ΔVth(t)", "없음", "그대로"],
-           ["응력 / WPE", "레이아웃 컨텍스트", "없음", "그대로"]])
+          ["변동 원인", "Δp(i, p) 공급원", "Δp 분포", "추가 특성화"],
+          [["국부 레이아웃 효과 (LLE)", "레이아웃 추출, 경계 + 내부 TR", "TR마다 다름", "없음"],
+           ["경년 열화 (aging, BTI)", "열화 모델  ΔVth(t), 스트레스 이력", "TR마다 다름", "없음"],
+           ["응력 / WPE", "레이아웃 컨텍스트", "TR마다 다름", "없음"],
+           ["전역 파라미터 이동", "전역 변동점 정의  ΔVth, ΔU0", "모든 TR 공통", "없음"]])
 
     textbox(s, 0.54, 5.06, 12.26, 0.3,
             [("검증 — ngspice 42, 3 cell × 10 arc × 9 point", {"size": 10.5, "bold": True})])

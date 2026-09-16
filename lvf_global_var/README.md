@@ -1,4 +1,4 @@
-# LVF 감도 기반 Global Variation Delay 모사 방법론
+# LVF 감도 기반 트랜지스터별 Global Variation 예측
 
 Author: yoobeom.kim@samsung.com
 
@@ -7,17 +7,28 @@ Author: yoobeom.kim@samsung.com
 LVF characterization은 arc의 table point마다 트랜지스터별 variation 시뮬레이션을 수행한다.
 각 트랜지스터 $i$ 의 parameter $q$ (vth, u0 등)를 $\pm\delta$ 흔들어 delay 감도 $S_{iq}$ 를 얻고,
 mismatch sigma와 결합해 `ocv_sigma_*` (또는 moment) table을 만든다.
-
 이 감도는 local(mismatch) sigma 계산에만 쓰이고 버려진다.
-같은 감도를 coherent하게 더하면 global variation(die-to-die vth0, u0 shift)에 대한 delay 변화가 나온다.
-본 방법론은 이 성질을 이용해 추가 characterization 없이 다음을 만든다.
 
-- 임의 global point(예: SSG, FFG, +2σ Vth_N)의 delay / transition table (Liberty)
-- cell별 global derate 계수 (PrimeTime / Tempus `set_timing_derate`)
-- 트랜지스터별 global 기여도 (어느 device가 corner shift를 만드는지)
+본 방법론은 같은 감도를 재사용해 **각 트랜지스터가 global variation에서 차지하는 몫**을 예측한다.
+감도를 정규화하면 트랜지스터별 기여도 $C_i$ 가 되고, 셀 전체를 동시에 흔들어 얻은 집합 감도
+$S_{agg}$ 에 이를 곱하면 트랜지스터별 감도 $C_i \cdot S_{agg}$ 가 나온다.
+추가 characterization simulation은 없다.
 
-적용 대상: 이미 LVF flow가 있는 라이브러리에서 corner what-if, PDK model update 영향 평가,
-corner 간 보간, LVF sigma의 local/global 정합성 검토.
+Global variation은 모든 트랜지스터에 같은 $\Delta p$ 가 걸리는 특수한 경우다.
+트랜지스터별 몫이 있으면 $\Delta p$ 가 트랜지스터마다 다른 경우로 그대로 확장된다.
+
+| 활용처 | $\Delta p$ 분포 | 추가 charac |
+|---|---|---|
+| LLE (경계 + 내부 TR) | TR마다 다름 | 없음 |
+| Aging / BTI | TR마다 다름 (stress 이력별) | 없음 |
+| Stress / WPE | TR마다 다름 | 없음 |
+| Global 변동점 (SSG, FFG, +2σ Vth_N 등) | 모든 TR 공통 | 없음 |
+
+Global 변동점에 대해서는 Liberty delay / transition table, cell별 derate
+(PrimeTime / Tempus `set_timing_derate`)를 직접 생성한다.
+
+적용 대상: 이미 LVF flow가 있는 라이브러리에서 LLE / aging의 트랜지스터별 보정,
+global 변동점 what-if, PDK model update 영향 평가, LVF sigma의 local/global 정합성 검토.
 
 ## 2. 이론
 
