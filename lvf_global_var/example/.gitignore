@@ -1,0 +1,5 @@
+# generated simulation decks and logs (large); CSV results and reports are kept
+out/decks/
+out/run_*.sh
+run_example.log
+out/tool_contrib_example.csv

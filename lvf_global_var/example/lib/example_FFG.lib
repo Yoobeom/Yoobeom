@@ -1,0 +1,407 @@
+/* Liberty written by write_nominal_lib.tcl (LVF global variation flow example) */
+library (example_nom_FFG) {
+  /* global variation corner FFG applied by apply_to_liberty.tcl : 20 table(s) scaled */
+  delay_model : table_lookup;
+  time_unit : "1ps";
+  voltage_unit : "1V";
+  current_unit : "1mA";
+  leakage_power_unit : "1nW";
+  pulling_resistance_unit : "1kohm";
+  capacitive_load_unit (1,ff);
+  nom_process : 1;
+  nom_temperature : 25;
+  nom_voltage : 1.0;
+  operating_conditions (nom) {
+    process : 1;
+    temperature : 25;
+    voltage : 1.0;
+    tree_type : balanced_tree;
+  }
+  default_operating_conditions : nom;
+  slew_lower_threshold_pct_rise : 20;
+  slew_lower_threshold_pct_fall : 20;
+  slew_upper_threshold_pct_rise : 80;
+  slew_upper_threshold_pct_fall : 80;
+  input_threshold_pct_rise : 50;
+  input_threshold_pct_fall : 50;
+  output_threshold_pct_rise : 50;
+  output_threshold_pct_fall : 50;
+  slew_derate_from_library : 1;
+  default_max_transition : 80;
+  lu_table_template (delay_3x3) {
+    variable_1 : input_net_transition;
+    variable_2 : total_output_net_capacitance;
+    index_1 ("10, 30, 80");
+    index_2 ("1, 4, 12");
+  }
+  cell (INV_X1) {
+    area : 1.0;
+    pin (A) {
+      direction : input;
+      capacitance : 0.5;
+    }
+    pin (ZN) {
+      direction : output;
+      function : "!A";
+      timing () {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delay_3x3) {
+          values ( \
+            "15.0901, 27.0517, 58.3862", \
+            "22.9265, 34.6309, 65.9506", \
+            "34.2906, 52.9362, 85.5199" \
+          );
+        }
+        ocv_sigma_cell_rise (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "0.964735, 1.93604, 4.47526", \
+            "1.07523, 2.04923, 4.60064", \
+            "2.36352, 2.71247, 4.93317" \
+          );
+        }
+        rise_transition (delay_3x3) {
+          values ( \
+            "13.2205, 30.023, 74.8188", \
+            "16.5758, 30.5472, 74.8219", \
+            "27.8082, 40.7978, 76.866" \
+          );
+        }
+        ocv_sigma_rise_transition (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "1.03658, 2.35981, 5.88901", \
+            "0.700369, 2.3366, 5.88894", \
+            "0.718431, 1.48441, 5.53939" \
+          );
+        }
+        cell_fall (delay_3x3) {
+          values ( \
+            "12.9573, 22.3798, 46.8573", \
+            "19.0417, 29.243, 53.8142", \
+            "26.8689, 43.3246, 71.641" \
+          );
+        }
+        ocv_sigma_cell_fall (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "0.818679, 1.48863, 3.21991", \
+            "1.31524, 1.79851, 3.54725", \
+            "3.15741, 3.37947, 4.36814" \
+          );
+        }
+        fall_transition (delay_3x3) {
+          values ( \
+            "9.04643, 21.0156, 52.9275", \
+            "12.722, 22.0362, 52.9306", \
+            "22.096, 32.9577, 57.1354" \
+          );
+        }
+        ocv_sigma_fall_transition (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "0.636522, 1.477, 3.72079", \
+            "0.230542, 1.25263, 3.72073", \
+            "0.351175, 0.53238, 2.95589" \
+          );
+        }
+      }
+    }
+  }
+  cell (NAND2_X1) {
+    area : 1.0;
+    pin (A) {
+      direction : input;
+      capacitance : 0.5;
+    }
+    pin (B) {
+      direction : input;
+      capacitance : 0.5;
+    }
+    pin (ZN) {
+      direction : output;
+      function : "!(A*B)";
+      timing () {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        when : "B";
+        timing_type : combinational;
+        cell_rise (delay_3x3) {
+          values ( \
+            "20.1638, 32.314, 63.8817", \
+            "27.6784, 39.5657, 71.1635", \
+            "43.1669, 59.5957, 90.5426" \
+          );
+        }
+        ocv_sigma_cell_rise (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "1.37467, 2.36057, 4.91668", \
+            "1.45216, 2.441, 5.01818", \
+            "2.47728, 2.74803, 5.31095" \
+          );
+        }
+        rise_transition (delay_3x3) {
+          values ( \
+            "19.4312, 36.2364, 81.0337", \
+            "21.0542, 36.2381, 81.0328", \
+            "32.8839, 44.6361, 82.3457" \
+          );
+        }
+        ocv_sigma_rise_transition (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "1.52564, 2.84885, 6.37803", \
+            "1.28174, 2.84882, 6.37795", \
+            "0.724111, 2.03325, 6.15036" \
+          );
+        }
+        cell_fall (delay_3x3) {
+          values ( \
+            "14.4227, 22.2061, 42.6307", \
+            "20.3842, 28.5456, 49.0218", \
+            "27.7736, 40.9654, 65.4637" \
+          );
+        }
+        ocv_sigma_cell_fall (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "0.634759, 0.994543, 1.94176", \
+            "0.92464, 1.21415, 2.16172", \
+            "2.21516, 2.32143, 2.74015" \
+          );
+        }
+        fall_transition (delay_3x3) {
+          values ( \
+            "11.9872, 22.1734, 49.2191", \
+            "15.0611, 23.2443, 49.2199", \
+            "24.7032, 33.986, 54.6838" \
+          );
+        }
+        ocv_sigma_fall_transition (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "0.49632, 0.935175, 2.10978", \
+            "0.281059, 0.794714, 2.10986", \
+            "0.295886, 0.47727, 1.58576" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        when : "A";
+        timing_type : combinational;
+        cell_rise (delay_3x3) {
+          values ( \
+            "25.8884, 37.9713, 69.4851", \
+            "33.403, 45.4183, 76.9711", \
+            "51.8002, 65.4771, 96.5649" \
+          );
+        }
+        ocv_sigma_cell_rise (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "1.87638, 2.84224, 5.38505", \
+            "1.9723, 2.946, 5.50255", \
+            "2.67185, 3.26053, 5.81948" \
+          );
+        }
+        rise_transition (delay_3x3) {
+          values ( \
+            "24.5465, 41.4689, 86.4699", \
+            "25.367, 41.4663, 86.4705", \
+            "35.0772, 47.6345, 87.2637" \
+          );
+        }
+        ocv_sigma_rise_transition (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "1.91294, 3.2501, 6.79915", \
+            "1.88459, 3.25013, 6.79927", \
+            "1.07791, 2.52913, 6.755" \
+          );
+        }
+        cell_fall (delay_3x3) {
+          values ( \
+            "17.3619, 25.1336, 45.5451", \
+            "22.1402, 30.0899, 50.633", \
+            "29.1045, 39.7707, 62.6547" \
+          );
+        }
+        ocv_sigma_cell_fall (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "0.710841, 1.04802, 1.97503", \
+            "1.07475, 1.34552, 2.19887", \
+            "2.42923, 2.52866, 2.94787" \
+          );
+        }
+        fall_transition (delay_3x3) {
+          values ( \
+            "12.0124, 22.1698, 49.2191", \
+            "13.1232, 22.5934, 49.2205", \
+            "19.5395, 28.3796, 51.9245" \
+          );
+        }
+        ocv_sigma_fall_transition (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "0.494164, 0.935027, 2.10974", \
+            "0.416953, 0.885945, 2.10977", \
+            "0.264416, 0.658781, 1.92008" \
+          );
+        }
+      }
+    }
+  }
+  cell (NOR2_X1) {
+    area : 1.0;
+    pin (A) {
+      direction : input;
+      capacitance : 0.5;
+    }
+    pin (B) {
+      direction : input;
+      capacitance : 0.5;
+    }
+    pin (ZN) {
+      direction : output;
+      function : "!(A+B)";
+      timing () {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        when : "!B";
+        timing_type : combinational;
+        cell_rise (delay_3x3) {
+          values ( \
+            "30.834, 42.7475, 74.1252", \
+            "38.2502, 50.1772, 81.6167", \
+            "51.5421, 65.0769, 96.5869" \
+          );
+        }
+        ocv_sigma_cell_rise (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "1.26691, 1.78219, 3.19063", \
+            "1.38501, 1.88857, 3.28437", \
+            "2.15214, 2.42682, 3.72797" \
+          );
+        }
+        rise_transition (delay_3x3) {
+          values ( \
+            "22.9966, 39.4095, 83.5258", \
+            "23.0952, 39.4361, 83.517", \
+            "28.2237, 42.3547, 83.7755" \
+          );
+        }
+        ocv_sigma_rise_transition (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "0.923661, 1.626, 3.52584", \
+            "0.91811, 1.62475, 3.52594", \
+            "0.661046, 1.4302, 3.50728" \
+          );
+        }
+        cell_fall (delay_3x3) {
+          values ( \
+            "28.2247, 38.4431, 64.0216", \
+            "34.6838, 44.9697, 70.6681", \
+            "51.2562, 62.8054, 88.2271" \
+          );
+        }
+        ocv_sigma_cell_fall (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "2.10192, 2.77151, 4.52348", \
+            "2.38194, 3.06793, 4.8317", \
+            "3.51489, 3.79155, 5.63422" \
+          );
+        }
+        fall_transition (delay_3x3) {
+          values ( \
+            "23.5742, 35.8319, 68.0225", \
+            "23.5928, 35.7751, 68.025", \
+            "31.7615, 41.1977, 69.3426" \
+          );
+        }
+        ocv_sigma_fall_transition (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "1.59921, 2.45814, 4.73063", \
+            "1.65242, 2.47348, 4.73034", \
+            "0.577533, 1.58196, 4.41442" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        when : "!A";
+        timing_type : combinational;
+        cell_rise (delay_3x3) {
+          values ( \
+            "19.9439, 32.035, 63.6054", \
+            "26.429, 38.2116, 69.8162", \
+            "38.3519, 54.5784, 86.517" \
+          );
+        }
+        ocv_sigma_cell_rise (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "0.852715, 1.39555, 2.83334", \
+            "0.910747, 1.46286, 2.90254", \
+            "1.65938, 1.83025, 3.13773" \
+          );
+        }
+        rise_transition (delay_3x3) {
+          values ( \
+            "22.3313, 39.2257, 83.5117", \
+            "24.0554, 38.838, 83.4979", \
+            "32.0674, 48.2856, 85.1877" \
+          );
+        }
+        ocv_sigma_rise_transition (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "0.915313, 1.6269, 3.52613", \
+            "0.763192, 1.64279, 3.52691", \
+            "0.628355, 1.18928, 3.34252" \
+          );
+        }
+        cell_fall (delay_3x3) {
+          values ( \
+            "18.8533, 28.6229, 53.4514", \
+            "25.3131, 35.0763, 60.2178", \
+            "36.4844, 50.6217, 77.4994" \
+          );
+        }
+        ocv_sigma_cell_fall (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "1.21812, 1.91488, 3.66926", \
+            "1.46158, 2.18694, 3.98378", \
+            "3.20639, 3.41074, 4.74599" \
+          );
+        }
+        fall_transition (delay_3x3) {
+          values ( \
+            "13.4535, 25.4173, 57.3315", \
+            "14.9503, 25.4186, 57.3303", \
+            "25.2314, 34.9909, 60.0799" \
+          );
+        }
+        ocv_sigma_fall_transition (delay_3x3) {
+          sigma_type : early_and_late;
+          values ( \
+            "0.945009, 1.78656, 4.03017", \
+            "0.657974, 1.78635, 4.03015", \
+            "0.415658, 0.736165, 3.44101" \
+          );
+        }
+      }
+    }
+  }
+}
