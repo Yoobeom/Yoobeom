@@ -161,14 +161,14 @@ def fig3():
             ha="center", fontsize=8.5)
     # example table
     hdr = ["slew", "load", "XMP0", "XMP0@2", "XMP0@3"]
-    rows = [["S1", "L1", "0.13", "0.13", "0.12"], ["S1", "L2", "0.15", "0.11", "0.14"], ["S2", "L1", "0.10", "0.17", "0.12"]]
+    rows = [["T1", "L1", "0.36", "0.34", "0.30"], ["T1", "L2", "0.38", "0.32", "0.30"], ["T2", "L1", "0.35", "0.35", "0.30"]]
     x0, y0, cw, rh = 2.2, 2.6, 1.5, 0.5
     for c, h in enumerate(hdr):
         box(ax, x0 + c * cw, y0, cw, rh, h, fs=7.5, fill=LIGHT)
     for r_, row in enumerate(rows):
         for c, v in enumerate(row):
             box(ax, x0 + c * cw, y0 - (r_ + 1) * rh, cw, rh, v, fs=7.5)
-    ax.text(6, 0.35, "기여도는 셀 / 아크 / 천이 방향 / 조건(when) / slew / load 에 의존하는 표면으로 저장된다 (예시 값)", ha="center", fontsize=8)
+    ax.text(6, 0.35, "기여도는 셀 / 아크 / 천이 방향 / 조건(when) / 타이밍 값 종류 / slew / load 에 의존하는 표면으로 저장된다 (예시 값, 행 합 = 1)", ha="center", fontsize=8)
     ax.text(6, 5.75, "[도 3]", ha="center", fontsize=10)
     finish(fig, "fig3.png")
 
@@ -205,7 +205,7 @@ def fig5():
     fig, ax = plt.subplots(figsize=(6.6, 3.2))
     ax.set_xlim(0, 12); ax.set_ylim(0, 5.2); ax.axis("off")
     box(ax, 0.3, 3.2, 2.6, 1.3, "C(i; s,l)\nTR 가중치, Σ C = 1\n(LVF)", fs=7.5)
-    box(ax, 3.6, 3.2, 2.6, 1.3, "S_agg(p; s,l)\n집합 파라미터 민감도\n(USM / 그룹 섭동)", fs=7.5)
+    box(ax, 3.6, 3.2, 2.6, 1.3, "S_agg(p; s,l)\n집합 파라미터 민감도\n(집합 민감도 lib / 그룹 섭동)", fs=7.5)
     box(ax, 6.9, 3.2, 2.6, 1.3, "S_rec(i,p; s,l)\n= C(i) · S_agg(p)\nTR별 파라미터 민감도", fs=7.5)
     box(ax, 10.0, 3.2, 1.8, 1.3, "STA-ready\n모델", fs=7.5)
     ax.text(3.25, 3.85, "×", ha="center", va="center", fontsize=14)
@@ -231,8 +231,8 @@ def fig6():
     arrow(ax, 2.8, 6.3, 3.3, 6.3); arrow(ax, 6.1, 6.3, 6.6, 6.3); arrow(ax, 9.2, 6.3, 9.7, 6.3)
     ax.text(6, 4.7, "ΔD_arc = Σ_i Σ_p C(i) · S_agg(p) · Δp(i,p),      D_corrected = D_base + ΔD_arc", ha="center", fontsize=8.5)
     hdr = ["데이터", "조회 키"]
-    rows = [["기여도", "cell / arc / transition / when / slew / load / TR"],
-            ["집합 민감도", "cell / arc / transition / parameter / slew / load"],
+    rows = [["기여도", "cell / arc / transition / when / measure / slew / load / TR"],
+            ["집합 민감도", "cell / arc / transition / measure / parameter / slew / load"],
             ["LLE 변동량", "instance / TR / parameter"],
             ["STA 출력", "보정된 셀 지연 / 천이 시간 (또는 인스턴스별 디레이트)"]]
     x0, y0, rh = 1.2, 3.8, 0.5

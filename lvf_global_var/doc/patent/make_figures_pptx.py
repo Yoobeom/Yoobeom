@@ -439,9 +439,9 @@ def fig3(prs):
     cv.arrow(2.5, 4.9, 2.9, 4.9); cv.arrow(5.2, 4.9, 5.6, 4.9); cv.arrow(7.9, 4.9, 8.3, 4.9)
     cv.text(6, 3.7, "C(i; s,l) = |S1(i,q; s,l)| / Σ_j |S1(j,q; s,l)|      (부호 유지 시  C(i) = S1(i) / Σ_j S1(j)),   Σ_i C(i) = 1", 8.5)
     hdr = ["slew", "load", "XMP0", "XMP0@2", "XMP0@3"]
-    rows = [["S1", "L1", "0.13", "0.13", "0.12"], ["S1", "L2", "0.15", "0.11", "0.14"], ["S2", "L1", "0.10", "0.17", "0.12"]]
+    rows = [["T1", "L1", "0.36", "0.34", "0.30"], ["T1", "L2", "0.38", "0.32", "0.30"], ["T2", "L1", "0.35", "0.35", "0.30"]]
     cv.table(2.2, 3.1, [1.5] * 5, 0.5, hdr, rows)
-    cv.text(6, 0.35, "기여도는 셀 / 아크 / 천이 방향 / 조건(when) / slew / load 에 의존하는 표면으로 저장된다 (예시 값)", 8, va="bottom")
+    cv.text(6, 0.35, "기여도는 셀 / 아크 / 천이 방향 / 조건(when) / 타이밍 값 종류 / slew / load 에 의존하는 표면으로 저장된다 (예시 값, 행 합 = 1)", 8, va="bottom")
 
 
 # ---------------------------------------------------------------------------
@@ -466,7 +466,7 @@ def fig4(prs):
 def fig5(prs):
     cv = Canvas(new_slide(prs, 5), 12, 4.7, 6.6)
     cv.rect(0.3, 3.2, 2.6, 1.3, "C(i; s,l)\nTR 가중치, Σ C = 1\n(LVF)", 7.5)
-    cv.rect(3.6, 3.2, 2.6, 1.3, "S_agg(p; s,l)\n집합 파라미터 민감도\n(USM / 그룹 섭동)", 7.5)
+    cv.rect(3.6, 3.2, 2.6, 1.3, "S_agg(p; s,l)\n집합 파라미터 민감도\n(집합 민감도 lib / 그룹 섭동)", 7.5)
     cv.rect(6.9, 3.2, 2.6, 1.3, "S_rec(i,p; s,l)\n= C(i) · S_agg(p)\nTR별 파라미터 민감도", 7.5)
     cv.rect(10.0, 3.2, 1.8, 1.3, "STA-ready\n모델", 7.5)
     cv.text(3.25, 3.85, "×", 14)
@@ -489,8 +489,8 @@ def fig6(prs):
     cv.arrow(2.8, 6.3, 3.3, 6.3); cv.arrow(6.1, 6.3, 6.6, 6.3); cv.arrow(9.2, 6.3, 9.7, 6.3)
     cv.text(6, 4.7, "ΔD_arc = Σ_i Σ_p C(i) · S_agg(p) · Δp(i,p),      D_corrected = D_base + ΔD_arc", 8.5)
     hdr = ["데이터", "조회 키"]
-    rows = [["기여도", "cell / arc / transition / when / slew / load / TR"],
-            ["집합 민감도", "cell / arc / transition / parameter / slew / load"],
+    rows = [["기여도", "cell / arc / transition / when / measure / slew / load / TR"],
+            ["집합 민감도", "cell / arc / transition / measure / parameter / slew / load"],
             ["LLE 변동량", "instance / TR / parameter"],
             ["STA 출력", "보정된 셀 지연 / 천이 시간 (또는 인스턴스별 디레이트)"]]
     cv.table(1.2, 4.3, [2.2, 7.4], 0.5, hdr, rows)

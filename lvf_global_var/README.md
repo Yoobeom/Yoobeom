@@ -76,6 +76,13 @@ $$G1_{gq} = \sum_{i\in g} \mathrm{sign}_{iq}\,\sqrt{w_{iq}}\;\frac{\sigma_{local
 없으면 pull rule(N은 fall edge, P는 rise edge를 driving; vth는 driving edge에서 +, 반대 edge에서 −; u0는 반대)로 대체한다.
 이 규칙은 non-driving group의 작은 음의 기여(contention, 누설)를 반대 부호로 잡을 수 있어 1차 모델의 오차 요인이 된다. 예제 수치는 5절 참조.
 
+기여도 정의는 두 가지다. 부호 없는 $C_i = |S1_i| / \sum_j |S1_j|$ 는 항상 $[0, 1]$ 안에 있다.
+부호 유지 $C_i = S1_i / \sum_j S1_j$ 는 non-driving group의 음의 감도를 보존하지만, 분모가 부호 합이라 양·음이 상쇄되는 그룹에서 발산한다.
+부호 조건비 $\rho = |\sum_j S1_j| / \sum_j |S1_j|$ 로 그룹마다 고른다($|C_i| \le 1/\rho$). 예제에서 $\rho \ge 0.5$ 기준으로 driving group 360개는 전부 부호 유지, non-driving group 351개 중 33개가 부호 없는 정의로 떨어진다.
+분모 $\sum_j |S1_j| = 0$ 인 그룹은 기여도 0으로 둔다.
+
+기여도는 delay와 transition에서 다르다(NAND2 A→ZN, M1 vth: delay 0.834, transition 0.546). `contrib.csv` 의 `meas` 열로 구분하고, delay 기여도를 transition에 쓰지 않는다.
+
 ### 2.4 2차 항과 cross term
 
 트랜지스터별 $\pm\delta$ 시뮬레이션은 대각 2차 항 $S2_{ii}$ 만 준다.
