@@ -18,7 +18,7 @@ The corner table is the only thing to edit. The script writes one scenario file 
 
 `collect_wns_per_scenario` gives one line per scenario, which answers the first question of any review: is one corner much worse than the rest. `worst_scenario_for` answers the question that comes before any ECO: in which scenario must this endpoint be fixed, and which scenarios must be checked afterwards.
 
-The second proc builds the remote block with string substitution because the endpoint name must be baked into the block before it is sent; the block itself is evaluated in the slave, where the master's variables do not exist.
+Both procs bake master-side values into the block before sending it (`string map` in the first, a double-quoted string in the second) because the block is evaluated in the slave, where the master's variables do not exist. A brace-quoted block containing `$dir` would fail in every slave with an undefined variable.
 
 ## 10.3 Merge independent runs
 

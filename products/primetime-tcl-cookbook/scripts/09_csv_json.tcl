@@ -67,7 +67,7 @@ proc json_str {s} {
 }
 
 proc json_val {v} {
-    if {[string is double -strict $v] && ![string match "0?*" $v]} { return $v }
+    if {[string is double -strict $v] && ![regexp {^-?0\d} $v]} { return $v }
     if {$v eq "true" || $v eq "false"} { return $v }
     return [json_str $v]
 }

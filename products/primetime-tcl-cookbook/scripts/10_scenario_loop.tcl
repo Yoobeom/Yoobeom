@@ -10,7 +10,8 @@
 proc collect_wns_per_scenario {{dir ./dmsa_work/wns}} {
     file mkdir $dir
     current_session -all
-    remote_execute {
+    # Braces would keep $dir unsubstituted on the master; bake it in first.
+    set body [string map [list @DIR@ $dir] {
         set paths [get_timing_paths -delay_type max -nworst 1 -max_paths 100000 -slack_lesser_than 0]
         set wns 0.0; set tns 0.0; set n 0
         foreach_in_collection p $paths {
@@ -18,10 +19,11 @@ proc collect_wns_per_scenario {{dir ./dmsa_work/wns}} {
             incr n; set tns [expr {$tns + $s}]
             if {$s < $wns} { set wns $s }
         }
-        set fh [open $dir/[current_scenario].csv w]
+        set fh [open @DIR@/[current_scenario].csv w]
         puts $fh "[current_scenario],$wns,$tns,$n"
         close $fh
-    }
+    }]
+    remote_execute $body
     puts [format "%-24s %9s %10s %7s" SCENARIO WNS TNS NVP]
     foreach f [lsort [glob -nocomplain $dir/*.csv]] {
         set fh [open $f r]
