@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 02_session_setup.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Reproducible PrimeTime session bring-up from a config array
 # Tool    : PrimeTime (pt_shell)
 # Usage   : pt_shell -f 02_session_setup.tcl

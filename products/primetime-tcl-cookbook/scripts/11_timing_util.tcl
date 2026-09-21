@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 11_timing_util.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Measure runtime and memory of any command block
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 11_timing_util.tcl ; timeit "worst paths" { get_timing_paths -max_paths 10000 }

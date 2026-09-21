@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 01_attr_helpers.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Safe attribute access helpers (INFINITY / empty / missing)
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 01_attr_helpers.tcl

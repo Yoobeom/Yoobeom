@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 03_list_attrs.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Dump every attribute of one object for discovery
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 03_list_attrs.tcl ; dump_attrs [get_cells U1]

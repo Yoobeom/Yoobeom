@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #-----------------------------------------------------------------------
 # File    : build.py
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Build the cookbook PDF, cover PNG and sales ZIP from manuscript
 # Usage   : python3 build/build.py   (run from the product root)
 #-----------------------------------------------------------------------

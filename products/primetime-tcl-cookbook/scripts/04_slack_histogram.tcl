@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 04_slack_histogram.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Endpoint slack histogram with text bars
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 04_slack_histogram.tcl ; slack_histogram -bin 0.020 -max 10000

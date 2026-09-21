@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 07_drv_summary.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Max transition / max capacitance violators as a table
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 07_drv_summary.tcl ; drv_table -out drv.csv

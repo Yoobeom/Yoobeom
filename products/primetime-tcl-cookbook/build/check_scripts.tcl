@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : check_scripts.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Parse-check every script in scripts/ with stubbed commands
 # Usage   : tclsh build/check_scripts.tcl
 #-----------------------------------------------------------------------

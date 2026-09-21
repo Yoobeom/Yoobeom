@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 04_path_table.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : One-line-per-path table from get_timing_paths attributes
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 04_path_table.tcl ; path_table -group CLK -max_paths 200

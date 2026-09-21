@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 04_path_classify.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Classify failing paths as reg2reg / in2reg / reg2out / in2out
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 04_path_classify.tcl ; classify_violators

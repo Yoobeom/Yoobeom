@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 03_find_cells.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Design query recipes: cells, pins, nets by type and name
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 03_find_cells.tcl

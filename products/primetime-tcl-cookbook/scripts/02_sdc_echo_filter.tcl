@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 02_sdc_echo_filter.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Find SDC lines that produced warnings while sourcing
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 02_sdc_echo_filter.tcl ; sdc_warnings sdc_source.log

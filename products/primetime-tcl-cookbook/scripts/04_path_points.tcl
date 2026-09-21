@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 04_path_points.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Walk the points of a path to find the largest stage delays
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 04_path_points.tcl ; biggest_stages [get_timing_paths] 5

@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 06_exception_audit.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Audit false paths, multicycle paths and ignored exceptions
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 06_exception_audit.tcl ; exception_audit rpt_dir

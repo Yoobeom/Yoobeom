@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 05_latency_skew.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Clock latency statistics and skew from path attributes
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 05_latency_skew.tcl ; latency_stats CLK

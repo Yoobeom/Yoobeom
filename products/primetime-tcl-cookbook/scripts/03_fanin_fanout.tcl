@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 03_fanin_fanout.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Cone tracing helpers built on all_fanin / all_fanout
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 03_fanin_fanout.tcl

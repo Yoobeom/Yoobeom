@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 09_signoff_summary.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : One JSON file per run with everything a dashboard needs
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 09_csv_json.tcl ; source 09_signoff_summary.tcl

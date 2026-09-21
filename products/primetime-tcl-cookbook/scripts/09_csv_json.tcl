@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 09_csv_json.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : CSV and JSON writers in pure Tcl (no packages needed)
 # Tool    : PrimeTime (pt_shell) or any Tcl 8.x
 # Usage   : source 09_csv_json.tcl

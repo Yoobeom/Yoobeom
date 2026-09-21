@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 08_eco_upsize.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Try-and-keep upsizing loop with incremental timing checks
 # Tool    : PrimeTime (pt_shell), requires ECO (size_cell) capability
 # Usage   : source 08_eco_upsize.tcl ; eco_upsize_loop cand.csv -limit 200

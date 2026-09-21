@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 09_run_diff.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Compare endpoint slack between two runs (CSV from path_table)
 # Tool    : any Tcl 8.x (runs outside pt_shell too)
 # Usage   : tclsh 09_run_diff.tcl old.csv new.csv 0.010

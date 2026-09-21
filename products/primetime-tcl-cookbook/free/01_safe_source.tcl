@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 01_safe_source.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Error handling wrappers for long batch runs
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 01_safe_source.tcl ; safe_source my_flow.tcl

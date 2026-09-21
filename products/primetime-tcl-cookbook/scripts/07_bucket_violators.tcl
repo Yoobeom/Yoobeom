@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 07_bucket_violators.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Group setup/hold violators by block, clock pair, and severity
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 07_bucket_violators.tcl ; bucket_violators -depth 2 -out v.csv

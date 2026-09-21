@@ -37,9 +37,7 @@ Amazon KDP는 코드 위주 PDF에 부적합(리플로우 EPUB 요구, 스크립
 
 ## 5. 회사 규정 확인 (판매 전 필수)
 
-- 스크립트 헤더의 author 이메일이 회사 계정(yoobeom.kim@samsung.com)으로 되어 있음. 개인 판매물에는 개인 이메일로 바꾸는 것을 권장. 한 줄로 일괄 변경:
-  `sed -i 's/yoobeom.kim@samsung.com/youbumkim@gmail.com/' scripts/*.tcl build/build.py`
-  이후 `python3 build/build.py` 재빌드.
+- 스크립트 헤더의 author 이메일은 개인 계정(youbumkim@gmail.com)으로 통일되어 있음. 회사 계정 언급 없음.
 - 내용은 공개된 PrimeTime 명령어와 일반적인 Tcl 패턴만 사용. 회사 디자인/라이브러리/내부 플로우 정보 없음. 그래도 겸업/부업 관련 사내 규정은 확인 필요.
 
 ## 6. 판매 후

@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 05_clock_summary.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Clock inventory: period, source, generated master, register count
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 05_clock_summary.tcl ; clock_summary

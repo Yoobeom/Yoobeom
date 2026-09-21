@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 01_args_parser.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Keyword argument parsing for reusable procs
 # Tool    : PrimeTime (pt_shell) or any Tcl 8.x
 # Usage   : source 01_args_parser.tcl

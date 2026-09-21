@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 04_worst_per_clock_pair.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Worst slack and violator count for every launch/capture pair
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 04_worst_per_clock_pair.tcl ; clock_pair_matrix

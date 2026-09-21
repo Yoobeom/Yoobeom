@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 09_custom_report_timing.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Standard report_timing options bundled for signoff review
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 09_custom_report_timing.tcl ; rt_full CLK 20 setup.rpt

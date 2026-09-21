@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 08_eco_candidates.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Pick upsizing candidates on failing paths and rank them
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 08_eco_candidates.tcl ; eco_size_candidates -out cand.csv

@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 06_case_and_disable.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Report case analysis and disabled arcs with their origin
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 06_case_and_disable.tcl ; case_disable_report rpt_dir

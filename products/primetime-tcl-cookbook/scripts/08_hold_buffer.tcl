@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 08_hold_buffer.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Insert hold buffers at endpoints with margin against setup
 # Tool    : PrimeTime (pt_shell), requires ECO (insert_buffer) capability
 # Usage   : source 08_hold_buffer.tcl ; fix_hold_by_buffer -buf lib/DLY2X1 -margin 0.02

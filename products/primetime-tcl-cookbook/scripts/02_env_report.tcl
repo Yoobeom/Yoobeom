@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 02_env_report.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Capture the analysis environment for reproducibility
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 02_env_report.tcl ; write_env_report env.rpt

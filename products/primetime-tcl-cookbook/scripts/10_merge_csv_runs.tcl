@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 10_merge_csv_runs.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Merge per-corner violator CSVs into one worst-per-endpoint table
 # Tool    : any Tcl 8.x (runs outside pt_shell)
 # Usage   : tclsh 10_merge_csv_runs.tcl merged.csv rpt/*/violators.csv

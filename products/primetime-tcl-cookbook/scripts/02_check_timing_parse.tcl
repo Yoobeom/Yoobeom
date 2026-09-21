@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 02_check_timing_parse.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Turn check_timing output into a pass/fail summary table
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 02_check_timing_parse.tcl ; check_timing_summary

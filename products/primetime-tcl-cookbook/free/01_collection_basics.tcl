@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 01_collection_basics.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Collection handling patterns that every other recipe relies on
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 01_collection_basics.tcl

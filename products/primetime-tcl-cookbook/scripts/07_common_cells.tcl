@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 07_common_cells.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Cells that appear in the most failing paths (fix these first)
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 07_common_cells.tcl ; common_cells_in_violators 30

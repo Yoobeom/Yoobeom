@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 08_fix_eco_wrapper.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Wrapper around fix_eco_timing / fix_eco_drc with before/after
 # Tool    : PrimeTime (pt_shell), requires PrimeTime ECO license
 # Usage   : source 08_fix_eco_wrapper.tcl ; run_fix_eco setup

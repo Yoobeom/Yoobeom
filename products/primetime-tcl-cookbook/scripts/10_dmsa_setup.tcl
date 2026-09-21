@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 10_dmsa_setup.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Distributed multi-scenario (DMSA) bring-up from a corner table
 # Tool    : PrimeTime DMSA (pt_shell -multi_scenario)
 # Usage   : pt_shell -multi_scenario -f 10_dmsa_setup.tcl

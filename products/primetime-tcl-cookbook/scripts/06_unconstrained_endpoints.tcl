@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 06_unconstrained_endpoints.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : List register data pins and output ports with no timing check
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 06_unconstrained_endpoints.tcl ; unconstrained_endpoints out.rpt

@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 05_generated_clock_check.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Sanity checks on generated clocks and clock sources
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 05_generated_clock_check.tcl ; generated_clock_check

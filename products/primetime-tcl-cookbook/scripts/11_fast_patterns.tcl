@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 11_fast_patterns.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Slow versus fast versions of common queries
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 11_fast_patterns.tcl

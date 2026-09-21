@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 08_write_eco.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Export ECO changes for the implementation tool and verify
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 08_write_eco.tcl ; export_eco eco_out

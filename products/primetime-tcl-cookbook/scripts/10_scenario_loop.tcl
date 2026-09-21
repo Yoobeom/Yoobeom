@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 10_scenario_loop.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Run a per-scenario proc remotely and collect results
 # Tool    : PrimeTime DMSA (pt_shell -multi_scenario)
 # Usage   : source 10_scenario_loop.tcl ; collect_wns_per_scenario

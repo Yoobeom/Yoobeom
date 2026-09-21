@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
 # File    : 06_io_constraint_coverage.tcl
-# Author  : yoobeom.kim@samsung.com
+# Author  : youbumkim@gmail.com
 # Purpose : Ports missing input/output delay, drive, or load
 # Tool    : PrimeTime (pt_shell)
 # Usage   : source 06_io_constraint_coverage.tcl ; io_coverage
